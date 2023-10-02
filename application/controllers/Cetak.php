@@ -19,6 +19,7 @@ class Cetak extends CI_Controller {
 		
 		$data['dataregistrasi'] =$data['registrasi']; 
 		$data['kepsek'] =$this->Model_common->get_firstdata_kode('KEPSEK'); 
+		$data['jadwal'] =$this->Model_common->get_firstdata_kode('JADWAL'); 
 		$pdfFilePath = "KARTUUJIAN".$filename.".pdf";
         $html =  $this->load->view('registrasiform/cetak_pernyataan',$data,true); 
 

@@ -53,6 +53,7 @@ class Siswa extends CI_Controller {
 					$nama_lengkap = $row['D'];
 					$kelas = $row['E'];
 					$layak = $row['F'];
+					$note = $row['G'];
 
 					$this->db->where('nomor_pendaftaran',$nomor_pendaftaran);
 					$this->db->where('nisn',$nisn);
@@ -65,7 +66,8 @@ class Siswa extends CI_Controller {
 							'nama_lengkap'=>$nama_lengkap,  
 							'kelas'=>$kelas,
 							'layak'=>$layak,
-							'no_urut'=>$urut
+							'no_urut'=>$urut,
+							'note'=>strtoupper($note)
 						));
 					}
 					 
@@ -99,18 +101,23 @@ class Siswa extends CI_Controller {
 
 	function ubah(){
 		$guid_kelulusan = $this->input->post('guid_kelulusan');
-		$Kelulusanandregister = $this->Model_kelulusanandregister->get_firstdata($guid_kelulusan);
+		$layak = $this->input->post('layak');
+		$note = $this->input->post('note');
 		
-		$Kelayakan = "TIDAK LAYAK";
-		if($Kelulusanandregister['layak'] == "LAYAK"){
-			$Kelayakan = "TIDAK LAYAK";
-		} 
-		if($Kelulusanandregister['layak'] == "TIDAK LAYAK"){
-			$Kelayakan = "LAYAK";
-		} 
+		
+		// $Kelulusanandregister = $this->Model_kelulusanandregister->get_firstdata($guid_kelulusan);
+		
+		// $Kelayakan = "TIDAK LAYAK";
+		// if($Kelulusanandregister['layak'] == "LAYAK"){
+		// 	$Kelayakan = "TIDAK LAYAK";
+		// } 
+		// if($Kelulusanandregister['layak'] == "TIDAK LAYAK"){
+		// 	$Kelayakan = "LAYAK";
+		// } 
 
 		$this->db->where('guid_kelulusan',$guid_kelulusan); 
-		$insert = $this->db->update('data_kelulusan',array('layak'=>$Kelayakan));
+		// $insert = $this->db->update('data_kelulusan',array('layak'=>$Kelayakan));
+		$insert = $this->db->update('data_kelulusan',array('layak'=>$layak,'note'=>strtoupper($note)));
 
 		if($insert){ 
 			$this->session->set_flashdata('message', 'Berhasil diubah');
@@ -120,6 +127,13 @@ class Siswa extends CI_Controller {
 			$this->session->set_flashdata('info', '2'); 
 		} 
 		redirect(site_url('siswa')); 
+	}
+
+	function loadedit(){
+		$guid_kelulusan = $this->input->post('q'); 
+		$data['loaddata'] = $this->Model_kelulusanandregister->get_firstdata($guid_kelulusan);
+		
+		$this->load->view('siswa/modal_edit',$data); 
 	}
 
 	function clean(){

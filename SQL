@@ -1,0 +1,3 @@
+ALTER TABLE `data_kelulusan`
+	ADD COLUMN `note` TEXT NULL AFTER `ideleted`;
+INSERT INTO `dt_common` VALUES ('-', '-', '279f35fd7bd6218ab02a2136ca336ea7.jpg', 'JADWAL');

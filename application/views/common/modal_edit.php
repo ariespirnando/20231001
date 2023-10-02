@@ -2,7 +2,11 @@
 <div class="form-row mb-4"> 
          
         
+	<?php 
 
+		if($loaddata['type']=="KEPSEK"){
+	
+	?>
     <div class="form-group col-md-8">
         <label for="inputAddress3">Nama Pegawai</label>  
 		<input name="type" type="hidden" value="<?php echo $loaddata['type'] ?>">
@@ -19,6 +23,8 @@
             *Mandatory
         </div>
     </div>  
+
+	<?php } ?>
  
 	<div class="form-group col-md-12">
 		<label for="inputAddress3">Upload Gambar</label>

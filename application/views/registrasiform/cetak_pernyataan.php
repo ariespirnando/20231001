@@ -32,7 +32,8 @@
     <br> 
     <table class="tablettdhd" width='100%'>
 		<tr>
-            <th class='tthd' width='100%'>KARTU ULANGAN HARIAN SEMESTER GANJIL</th> 
+            <!-- <th class='tthd' width='100%'>KARTU ULANGAN HARIAN SEMESTER GANJIL</th>  -->
+			<th class='tthd' width='100%'>KARTU ULANGAN TENGAH SEMESTER GANJIL</th> 
         </tr>  
         <tr>
             <th class='tthd' width='100%'>TAHUN PELAJARAN 2023/2024</th> 
@@ -79,7 +80,26 @@
             <td class='tttd'>Kartu ini harus dibawa selama ujian berlangsung</td>  
         </tr>  
 		<tr>
-            <td class='tttd' width='65%'></td> 
+            <td class='tttd' width='65%' align="left" valign="top">
+ 				<?php 
+				
+ 					if($dataregistrasi['note']!=""){ 
+				?>
+				<hr>
+				Daftar Mata Pelajaran Yang tidak memenuhi syarat :
+				<?php 
+
+						$note = explode(',',$dataregistrasi['note']);
+						echo "<ol>";
+						foreach ($note as $n) {
+							echo "<li>".$n."</li>";
+						}
+						echo "</ol>";
+
+					}
+				?>
+
+			</td> 
 			<td class='tttd' >
 			<img src="<?php echo base_url() ?>/upload/<?php echo $kepsek['ttd_path'] ?>" style='width: 100px;'>
 			<br><br>
@@ -90,8 +110,17 @@
 			<td class='tttd' >NIP <?php echo $kepsek['nip']; ?></td> 
         </tr>
     </table>
- 
-     
+ 	<br>
+	<hr>
+	<table class="tablettdhd" width='100%'>
+		<tr> 
+			<th class='tthd' width='100%'>JADWAL UTS/STS</th> 
+        </tr>  
+        <tr>
+            <th class='tthd' width='100%'><br><img src="<?php echo base_url() ?>/upload/<?php echo $jadwal['ttd_path'] ?>"></th> 
+        </tr>    
+    </table>
+      
 </body> 
 
 <style>

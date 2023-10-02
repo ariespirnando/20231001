@@ -52,6 +52,7 @@
                         <th>Nama Lengkap</th>
                         <th>Kelas</th>
                         <th>Status</th> 
+						<th>Note (TMS)</th> 
                         <th class="text-center">Action</th>
                         
                     </tr>
@@ -80,7 +81,7 @@
 							
            
 						</td>
-                         
+                        <td><?php echo $d['note']?></td>
                          
                         <td class="text-center"> 
 							<span  onclick="load_edit('<?php echo $d['guid_kelulusan']?>')" class="btn btn-outline-primary"  data-toggle="modal" data-target=".bd-edit-lg4">
@@ -132,7 +133,7 @@
 </div>
 
 <div class="modal fade bd-edit-lg4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="myLargeModalLabel">Ubah Status</h5>
@@ -141,16 +142,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="loader dual-loader mx-auto"></div>
+				<div class="clearbody"><div class="loader dual-loader mx-auto"></div></div>
+                <!-- <div class="loader dual-loader mx-auto"></div> -->
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <form enctype='multipart/form-data' action="<?php echo base_url().'siswa/ubah' ?>" method="post">
                 <input type="hidden" class="deletevalue2" name="guid_kelulusan" value=""/> 
                 <button type="submit" class="btn btn-danger submit-fn">Ubah Status</button>
                 <button class="btn btn-default submit-fn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Batal</button>
             
                 </form>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -213,7 +215,16 @@ function send_delete(q){
     $('.deletevalue').val(q); 
 }
 function load_edit(q){
-    $('.deletevalue2').val(q); 
+    //$('.deletevalue2').val(q); 
+
+	$.ajax({
+        url: '<?php echo base_url()?>siswa/loadedit',
+        type: 'post', 
+        data: "q="+q, 
+        success: function(response){
+            $('.clearbody').html(response); 
+        }   
+    })
 }
 </script>
 
