@@ -24,7 +24,7 @@
             <div class="alert alert-outline-primary mt-4 mb-2" role="alert">
             <?php 
             if($registrasi['layak']=='TIDAK LAYAK'){?>
-            Kartu Ujian belum bisa di download, silakan hubungi bagian administrasi <BR> Terimakasih...</div>
+            Kartu Ujian belum bisa di download, silakan hubungi bagian Wali Kelas <BR> Terimakasih...</div>
             <?php }else{?>
             Kartu Ujian sudah tersedia, silahkan didownload untuk mengikuti ujian</div>
 			<a href="<?php echo base_url().'cetak/pernyataan/'.$registrasi['nomor_pendaftaran'] ?>" class="btn btn-bg btn-outline-primary">Download Kartu Ujian</a>
