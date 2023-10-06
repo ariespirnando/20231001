@@ -33,7 +33,7 @@
     <table class="tablettdhd" width='100%'>
 		<tr>
             <!-- <th class='tthd' width='100%'>KARTU ULANGAN HARIAN SEMESTER GANJIL</th>  -->
-			<th class='tthd' width='100%'>KARTU ULANGAN TENGAH SEMESTER GANJIL</th> 
+			<th class='tthd' width='100%'>KARTU PENILAIAN/SUMATIF TENGAH SEMESTER GANJIL</th> 
         </tr>  
         <tr>
             <th class='tthd' width='100%'>TAHUN PELAJARAN 2023/2024</th> 
@@ -77,7 +77,7 @@
 			<td class='tttd' >Kepala Sekolah</td> 
         </tr>
         <tr>
-            <td class='tttd'>Kartu ini harus dibawa selama ujian berlangsung</td>  
+            <td class='tttd'>Kartu ini harus dibawa selama ujian berlangsung dan ditaruh di meja peserta saat ujian berlangsung.</td>  
         </tr>  
 		<tr>
             <td class='tttd' width='65%' align="left" valign="top">
@@ -114,7 +114,7 @@
 	<hr>
 	<table class="tablettdhd" width='100%'>
 		<tr> 
-			<th class='tthd' width='100%'>JADWAL UTS/STS</th> 
+			<th class='tthd' width='100%'>KARTU PENILAIAN/SUMATIF TENGAH SEMESTER GANJIL</th> 
         </tr>  
         <tr>
             <th class='tthd' width='100%'><br><img src="<?php echo base_url() ?>/upload/<?php echo $jadwal['ttd_path'] ?>"></th> 
