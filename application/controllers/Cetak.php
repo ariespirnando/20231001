@@ -9,10 +9,16 @@ class Cetak extends CI_Controller {
 	}
      
 
-    public function pernyataan(){
+    public function pernyataan(){ 
+				
         $data = array();
 		$data['nomor_pendaftaran'] = $this->uri->segment(3);
 		$data['registrasi'] = $this->Model_registrasi->data_registrasi($data['nomor_pendaftaran']);  
+	    
+	$role = base64_decode($this->session->userdata('role_ses')); 
+	if($role == "U-REG"){
+		//Update To Count Cetak
+	} 
 
         $filename = preg_replace('/[^A-Za-z0-9\  ]/','_',$data['registrasi']['nama_lengkap']).'_'.preg_replace('/[^A-Za-z0-9\  ]/','_',$data['registrasi']['nisn']);  
 		
